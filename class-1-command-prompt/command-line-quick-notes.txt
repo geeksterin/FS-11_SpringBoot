@@ -1,0 +1,41 @@
+- Directory : talk about what a directory is ?
+
+- Present working Directory : just write cd
+
+- Navigating directory :
+	○ Cd path
+	○ Cd..
+
+- Make a directory :
+
+	○ Mkdir <folder name>
+	○ For multiple directories : mkdir <f1> <f2> <f3>
+
+- Ls command : list everything in the folder : <dir> 
+
+	○ Will show everything in the directory :
+	○ Dir
+	○ Will show 2 extra things : . And .. : current and parent folder
+	○ To view recursively : dir /Secho 
+	○ https://www.howtogeek.com/363639/how-to-use-the-dir-command-in-windows/#:~:text=Run%20%E2%80%9Cdir%E2%80%9D%20in%20Command%20Prompt,h%E2%80%9D%20will%20display%20hidden%20files.
+
+- Create a file using cmd :
+	○ Print something in cmd using echo
+	○ >> is used to write something to a file
+	○ echo "Mainak">>t11.txt
+
+- Creating the bat files :
+	○ Write commands in there
+	○ Pause
+	○ Run the bat file in the command prompt
+	○ Just like methods
+	
+- Copy command : https://www.computerhope.com/copyhlp.htm
+	○ Copy <file name> <directory name>
+
+- Move command :
+	○ Move <source paths> <destination path>
+
+- Delete command :
+	○ del <file name>
+rmdir <directory name>
