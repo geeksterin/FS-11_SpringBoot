@@ -1,0 +1,11 @@
+git init - to create .git folder 
+git status
+git add <file_name>
+git add .
+git commit -m "some message"
+git log
+git checkout <commitid>
+git remote -v
+
+--
+git push origin <branch name>
