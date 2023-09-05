@@ -45,7 +45,7 @@ public class MailHandlerBase {
         try {
             mailMessage.setFrom(MailConstants.SENDER);
             mailMessage.setSubject("Geekster Mailing class");
-            mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress("nishantbudia@gmail.com"));
+            mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress("mainakgh1@gmail.com"));
             mailMessage.setText("Mainak is trying to teach mailing through java!!!");
 
             Transport.send(mailMessage);
