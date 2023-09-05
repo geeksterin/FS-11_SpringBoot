@@ -8,7 +8,12 @@ public class Main {
         Triangle t1 = new Triangle(10,10);
         //System.out.println(0.5 * t1.getBase() * t1.getHeight());
 
-        AreaCalculatorTriangle calculator = new AreaCalculatorTriangle();
+        AreaCalculatorTriangleSquare calculator = new AreaCalculatorTriangleSquare();
         calculator.calculateTriangleArea(t1);
+
+        //Square s1
+        Square s1 = new Square(6);
+        calculator.calculateSquareArea(s1);
+
     }
 }
