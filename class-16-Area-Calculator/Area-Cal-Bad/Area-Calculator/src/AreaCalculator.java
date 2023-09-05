@@ -1,4 +1,6 @@
-public class AreaCalculatorTriangleSquare {
+
+
+public class AreaCalculator {
 
   /*  void calculateTriangleArea(int height, int base)
     {
@@ -14,6 +16,16 @@ public class AreaCalculatorTriangleSquare {
     void calculateSquareArea(Square s1)
     {
         System.out.println(s1.getSide() * s1.getSide());
+    }
+
+    void calculateRectangleArea(Rectangle r1)
+    {
+        System.out.println(r1.getLength() * r1.getBreath());
+    }
+
+    void calculateCircleArea(Circle c1)
+    {
+        System.out.println(3.14 * c1.getRadius() * c1.getRadius());
     }
 
 }
