@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiTest {
 
 
-   // @Autowired
-    Car carObj;
+   //@Autowired
+   Car carObj;
 
     @GetMapping("api/v1/dukhiAatmaa")
     public String api1()
