@@ -3,7 +3,7 @@ package org.geekster;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class Car {
 
     private String color;

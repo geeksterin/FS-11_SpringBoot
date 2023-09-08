@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Configuration
 public class ObjectFactory {
 
@@ -14,10 +17,9 @@ public class ObjectFactory {
 
     @Bean
     @Primary
-    public Car createBlueCar()
+    public List<Integer> createNumberList()
     {
-        System.out.println("testing configuration class methods!!!!!!");
-        return new Car("Blue");
+        return new ArrayList<>();
     }
 
     @Bean
