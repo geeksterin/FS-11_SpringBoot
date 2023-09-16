@@ -28,7 +28,7 @@ public class UserService {
 
     public String updatePasswordByUserId(Integer id, String password) {
 
-        /*for(User user : getAllUser())
+        for(User user : getAllUser())
         {
             if(user.getUserId().equals(id))
             {
@@ -37,13 +37,13 @@ public class UserService {
             }
         }
 
-        return "user : " + id + " not found";*/
+        return "user : " + id + " not found";
 
-        getAllUser()
+       /* getAllUser()
                 .stream()
                 .filter(user->user.getUserId().equals(id))
                 .forEach(user->{
                     user.setPassword(password);
-                });
+                });*/
     }
 }
