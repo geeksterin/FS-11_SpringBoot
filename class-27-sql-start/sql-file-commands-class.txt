@@ -1,0 +1,68 @@
+create database fs11test;
+
+
+use fs11test;
+
+##create tables :
+
+##BANDS:
+
+create table band
+(
+	bandId INT,
+    bandName VARCHAR(255)
+);
+
+##ALBUM
+
+create table album
+(
+	albumId INT,
+    albumName VARCHAR(255),
+    albumGenre VARCHAR(255),
+    albumYear DATE
+);
+
+
+##insert :
+
+INSERT INTO band (bandId,bandName)
+VALUES (2,'SANAM'),
+	   (3,'BEATTLES'),
+	   (4,'PINK FLOYD');
+
+
+##READ 
+
+SELECT bandName,bandId
+FROM band;
+
+
+SELECT *
+FROM band;
+
+
+SELECT *
+FROM BAND
+WHERE bandId = 3;
+
+select bandName
+from BAND
+WHERE bandId = 4;
+
+select bandName
+from BAND
+WHERE bandId = 4 or bandId = 3;
+
+
+## UPDATE :
+
+UPDATE BAND
+SET bandName = "SANAM PURI"
+WHERE bandName = "SANAM" ;
+
+## DELETIONS:
+
+DELETE 
+FROM BAND
+WHERE bandName = "SANAM PURI"
