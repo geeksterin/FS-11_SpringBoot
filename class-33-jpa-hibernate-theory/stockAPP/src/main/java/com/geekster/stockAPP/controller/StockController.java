@@ -56,8 +56,7 @@ public class StockController {
     public String updateStockByType(@RequestParam float hike,@RequestParam Type stockType)
     {
 
-        String result =  stockService.updateStockByType(hike,stockType);
-        return result;
+        return stockService.updateStockByType(hike,stockType);
     }
 
     @GetMapping("stocks/type/{type}/price/lessOrEqual/{price}")

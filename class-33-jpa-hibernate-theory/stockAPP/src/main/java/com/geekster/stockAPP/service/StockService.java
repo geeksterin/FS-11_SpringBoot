@@ -64,7 +64,8 @@ public class StockService {
 
 
         stockRepo.updateStockByType(hike,stockType.name());
-        int x = 10/0;
+
+        //throw new IllegalStateException("mainak is playing with transactions");
         return "updated";
     }
 }

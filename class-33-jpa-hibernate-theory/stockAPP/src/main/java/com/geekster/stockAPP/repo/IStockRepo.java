@@ -2,7 +2,6 @@ package com.geekster.stockAPP.repo;
 
 import com.geekster.stockAPP.model.Stock;
 import com.geekster.stockAPP.model.Type;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface IStockRepo extends JpaRepository<Stock,Long> {
+public interface IStockRepo extends CrudRepository<Stock,Long> {
 
     List<Stock> findByStockTypeAndStockPriceLessThanEqualOrderByStockPriceDesc(Type type, double price);
 
