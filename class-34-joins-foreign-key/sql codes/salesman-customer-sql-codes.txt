@@ -1,0 +1,101 @@
+create database fs11joinDB
+
+use fs11joinDB
+
+CREATE TABLE salesmen (
+    salesman_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    city VARCHAR(50),
+    commission DECIMAL(4, 2)
+);
+
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    cust_name VARCHAR(50),
+    city VARCHAR(50),
+    grade INT,
+    salesman_id INT
+);
+
+select *
+from salesmen
+
+
+select *
+from customers
+
+
+INSERT INTO salesmen (salesman_id, name, city, commission)
+VALUES
+    (5001, 'James Hoog', 'New York', 0.15),
+    (5002, 'Nail Knite', 'Paris', 0.13),
+    (5005, 'Pit Alex', 'London', 0.11),
+    (5006, 'Mc Lyon', 'Paris', 0.14),
+    (5007, 'Paul Adam', 'Rome', 0.13),
+    (5003, 'Lauson Hen', 'San Jose', 0.12);
+    
+    
+INSERT INTO customers (customer_id, cust_name, city, grade, salesman_id)
+VALUES
+    (3002, 'Nick Rimando', 'New York', 100, 5001),
+    (3007, 'Brad Davis', 'New York', 200, 5001),
+    (3005, 'Graham Zusi', 'California', 200, 5002),
+    (3008, 'Julian Green', 'London', 300, 5002),
+    (3004, 'Fabian Johnson', 'Paris', 300, 5006),
+    (3009, 'Geoff Cameron', 'Berlin', 100, 5003),
+    (3003, 'Jozy Altidor', 'Moscow', 200, 5007),
+    (3001, 'Brad Guzan', 'London', NULL, 5005);  
+    
+    
+    
+    INSERT INTO salesmen (salesman_id, name, city, commission)
+	VALUES
+    (6001, 'sUJIT', 'New York', 0.19)
+    
+    INSERT INTO customers (customer_id, cust_name, city, grade, salesman_id)
+VALUES
+    (3011, 'Mainak', 'Greater Noida', 100, 100000)
+
+    
+    select *
+    from salesmen
+    where city = 'London'
+    
+    
+    
+    select *
+    from salesmen
+    INNER join customers
+    on salesmen.salesman_id = customers.salesman_id 
+    order by salesmen.salesman_id
+    
+    
+    
+    select cust_name
+    from salesmen
+    INNER join customers
+    on salesmen.salesman_id = customers.salesman_id 
+    WHERE name = 'Paul Adam'
+    
+    
+    select customers.*
+    from salesmen
+    INNER join customers
+    on salesmen.salesman_id = customers.salesman_id 
+    where commission >= 0.13
+    
+    
+    
+    select *
+    from salesmen
+    left join customers
+    on salesmen.salesman_id = customers.salesman_id 
+    where customer_id is null
+    
+    
+    
+    
+    
+    
+    
