@@ -18,4 +18,12 @@ public class AddressService {
         addressRepo.save(newAddress);
         return "added";
     }
+
+    public String updateAddress(Integer id) {
+
+        Address add = addressRepo.findById(id).get();
+        add.setAddressName("c-226");
+        addressRepo.save(add);
+        return "updated";
+    }
 }
