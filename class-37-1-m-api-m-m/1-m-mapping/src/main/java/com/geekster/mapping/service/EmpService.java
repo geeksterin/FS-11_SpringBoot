@@ -31,12 +31,17 @@ public class EmpService {
         return "emp added";
     }
 
-   /* public Address getAddressOfEmployee(Long empId) {
+    public Address getAddressOfEmployee(Long empId) {
 
-        Emp employee = empRepo.findById(empId).orElseThrow();
 
-        return employee.getAddress();
-    }*/
+
+        return addressRepo.findByEmployeesEmpId(empId);
+
+
+        //Emp myEmp =  empRepo.findById(empId).orElseThrow();
+
+        //return addressRepo.findByEmployees(myEmp);
+    }
 
    /* public List<Emp> getEmpByAddId(Integer addId) {
 

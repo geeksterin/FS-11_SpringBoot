@@ -27,12 +27,12 @@ public class EmpController {
     }
 
 
-   /* @GetMapping("emps/{empId}/address")
+    @GetMapping("emps/{empId}/address")
     public Address getAddressOfEmployee(@PathVariable Long empId)
     {
 
         return empService.getAddressOfEmployee(empId);
-    }*/
+    }
 
     /*@GetMapping("employee/address/{addId}")
     public List<Emp> getEmpByAddId(@PathVariable Integer addId)
