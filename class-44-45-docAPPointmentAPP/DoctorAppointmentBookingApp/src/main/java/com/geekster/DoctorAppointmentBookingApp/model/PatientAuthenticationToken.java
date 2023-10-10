@@ -1,6 +1,7 @@
 package com.geekster.DoctorAppointmentBookingApp.model;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 import jakarta.persistence.*;
@@ -24,6 +25,12 @@ public class PatientAuthenticationToken {
 
     //each token should be linked with a patient
 
+
+    public PatientAuthenticationToken(Patient patient) {
+        this.patient = patient;
+        this.tokenCreationTime = LocalDateTime.now();
+        this.tokenValue = UUID.randomUUID().toString();
+    }
 
     @OneToOne
     @JoinColumn(name = "fk_patient_id")
