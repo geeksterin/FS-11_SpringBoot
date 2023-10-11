@@ -1,6 +1,7 @@
 package com.geekster.DoctorAppointmentBookingApp.service;
 
 
+import com.geekster.DoctorAppointmentBookingApp.model.Doctor;
 import com.geekster.DoctorAppointmentBookingApp.model.Patient;
 import com.geekster.DoctorAppointmentBookingApp.model.PatientAuthenticationToken;
 import com.geekster.DoctorAppointmentBookingApp.model.dto.AuthenticationInputDto;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Service
 public class PatientService {
@@ -108,5 +110,10 @@ public class PatientService {
             return "Un Authenticated access!!!";
         }
 
+    }
+
+    public List<Patient> getAllPatients() {
+
+        return patientRepo.findAll();
     }
 }
