@@ -1,6 +1,7 @@
 package com.geekster.DoctorAppointmentBookingApp.service;
 
 
+import com.geekster.DoctorAppointmentBookingApp.model.BloopGroup;
 import com.geekster.DoctorAppointmentBookingApp.model.Doctor;
 import com.geekster.DoctorAppointmentBookingApp.model.Patient;
 import com.geekster.DoctorAppointmentBookingApp.model.PatientAuthenticationToken;
@@ -82,8 +83,14 @@ public class PatientService {
             {
                 // return a token for this sign in
                 PatientAuthenticationToken token  = new PatientAuthenticationToken(existingPatient);
-                pTokenService.createToken(token);
-                return token.getTokenValue();
+
+                if(EmailService.sendEmail(email,"otp after login", token.getTokenValue())) {
+                    pTokenService.createToken(token);
+                    return "check email for otp/token!!!";
+                }
+                else {
+                    return "error while generating token!!!";
+                }
 
             }
             else {
@@ -115,5 +122,17 @@ public class PatientService {
     public List<Patient> getAllPatients() {
 
         return patientRepo.findAll();
+    }
+
+    public List<Patient> getAllPatientsByBloodGroup(BloopGroup bloodGroup) {
+
+        List<Patient> patients = patientRepo.findByPatientBloodGroup(bloodGroup);
+
+        for(Patient patient: patients)
+        {
+            patient.setAppointments(null);
+        }
+
+        return patients;
     }
 }

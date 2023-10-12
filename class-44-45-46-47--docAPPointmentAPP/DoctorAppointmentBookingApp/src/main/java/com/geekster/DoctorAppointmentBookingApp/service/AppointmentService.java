@@ -68,4 +68,31 @@ public class AppointmentService {
             return "Un Authenticated access!!!";
         }
     }
+
+    public String cancelAppointment(AuthenticationInputDto authInfo, Integer appointmentId) {
+
+        if(pTokenService.authenticate(authInfo)) {
+
+            String email = authInfo.getEmail();
+
+            Patient patient = patientRepo.findFirstByPatientEmail(email);
+
+           Appointment existingAppointment =  appointmentRepo.findById(appointmentId).orElseThrow();
+
+           if(existingAppointment.getPatient().equals(patient))
+           {
+               appointmentRepo.deleteById(appointmentId);
+               return "appointment with " + existingAppointment.getDoctor().getDocName() + " has been cancelled!!";
+
+           }
+           else
+           {
+                return "UnAuthorized cancel appointment!!";
+           }
+
+        }
+        else {
+            return "Un Authenticated access!!!";
+        }
+    }
 }

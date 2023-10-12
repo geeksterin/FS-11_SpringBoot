@@ -1,19 +1,20 @@
 package com.geekster.DoctorAppointmentBookingApp.controller;
 
-import com.geekster.DoctorAppointmentBookingApp.model.Appointment;
-import com.geekster.DoctorAppointmentBookingApp.model.Patient;
+import com.geekster.DoctorAppointmentBookingApp.model.*;
 import com.geekster.DoctorAppointmentBookingApp.model.dto.AuthenticationInputDto;
 import com.geekster.DoctorAppointmentBookingApp.model.dto.ScheduleAppointmentDTO;
 import com.geekster.DoctorAppointmentBookingApp.model.dto.SignInInputDto;
 import com.geekster.DoctorAppointmentBookingApp.service.AppointmentService;
+import com.geekster.DoctorAppointmentBookingApp.service.DoctorService;
 import com.geekster.DoctorAppointmentBookingApp.service.PatientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
+@Validated
 @RestController
 public class PatientController {
 
@@ -23,10 +24,13 @@ public class PatientController {
     @Autowired
     AppointmentService appointmentService;
 
+    @Autowired
+    DoctorService doctorService;
+
 
     //sign up
     @PostMapping("patient/signup")
-    public String patientSignUp(@RequestBody Patient patient)
+    public String patientSignUp(@Valid @RequestBody Patient patient)
     {
         return patientService.patientSignUp(patient);
     }
@@ -56,4 +60,20 @@ public class PatientController {
     {
         return appointmentService.scheduleAppointment(scheduleAppointmentDTO.getAuthInfo(),scheduleAppointmentDTO.getAppointment());
     }
+
+    @DeleteMapping("patient/appointment/{appointmentId}/cancel")
+    public String cancelAppointment(@RequestBody AuthenticationInputDto authInfo, @PathVariable Integer appointmentId)
+    {
+        return appointmentService.cancelAppointment(authInfo,appointmentId);
+    }
+
+    @GetMapping("doctors/qualification/{qual}/or/specialization/{spec}")
+    public List<Doctor> getDoctorsByQualificationOrSpec(@RequestBody AuthenticationInputDto authInfo,@PathVariable Qualification qual,@PathVariable Specialization spec)
+    {
+        return doctorService.getDoctorsByQualificationOrSpec(authInfo,qual,spec);
+    }
+
+
+
+
 }
