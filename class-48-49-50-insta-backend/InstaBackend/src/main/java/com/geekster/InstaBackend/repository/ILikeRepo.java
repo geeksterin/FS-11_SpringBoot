@@ -12,4 +12,7 @@ import java.util.List;
 public interface ILikeRepo extends JpaRepository<Like,Integer> {
 
 
+    List<Like> findByInstaPost(Post myPost);
+
+    List<Like> findByInstaPostAndLiker(Post instaPostToBeLiked, User liker);
 }

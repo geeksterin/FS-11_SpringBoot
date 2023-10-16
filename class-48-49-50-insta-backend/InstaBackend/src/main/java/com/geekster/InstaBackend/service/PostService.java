@@ -2,8 +2,8 @@ package com.geekster.InstaBackend.service;
 
 
 import com.geekster.InstaBackend.model.Post;
-import com.geekster.InstaBackend.model.User;
 import com.geekster.InstaBackend.repository.IPostRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,21 @@ public class PostService {
     IPostRepo postRepo;
 
 
+    @Autowired
+    LikeService likeService;
+
+    @Autowired
+    CommentService commentService;
+
+
+
+
+
     public void createInstaPost(Post instaPost) {
+
+        //set creation time before saving :
+        instaPost.setPostCreatedTimeStamp(LocalDateTime.now());
+
         postRepo.save(instaPost);
     }
 
@@ -25,15 +39,20 @@ public class PostService {
 
     }
 
+
+    @Transactional
     public void removeById(Integer postId) {
 
+        Post myPost = postRepo.findById(postId).orElseThrow();
+
         //delete all likes
+        likeService.clearLikesByPost(myPost);
 
 
         // delete all comments
-
+        commentService.clearCommentsByPost(myPost);
 
         //finally delete post
-
+        postRepo.deleteById(postId);
     }
 }
