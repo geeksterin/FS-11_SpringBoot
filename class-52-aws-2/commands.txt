@@ -1,0 +1,22 @@
+sudo apt update
+
+sudo apt install openjdk-17-jdk
+
+java --version
+
+mvn --version
+
+sudo apt install maven
+
+
+--- push code to github and come back to ec2 machine--------------------
+
+create a folder : mkdir <name of the folder>
+
+show content at this location : ls
+
+-- go to the location of the pom file by using the cd command
+
+-- mvn install : create a jar file of your project inside the target folder
+
+--java -jar <path of jar file> --go to target and run java -jar <name of jar file>
