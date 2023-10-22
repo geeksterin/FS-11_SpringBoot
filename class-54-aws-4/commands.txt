@@ -25,7 +25,7 @@ open sql console using root user :
 sudo mysql -u root -p (will ask for password : don’t give any and just press enter)
 
 
-create User 'mg-test-1' @'%' IDENTIFIED BY '1234'
+create User 'mg-test-1' @'%' IDENTIFIED BY '1234';
 
 GRANT ALL PRIVILEGES ON *.* TO 'mg-test-1' @'%' WITH GRANT OPTION;
 
@@ -35,7 +35,7 @@ FLUSH PRIVILEGES;
 //
 Flushing privileges in MySQL is necessary when you make changes to user privileges using the GRANT, REVOKE, CREATE USER, or DROP USER statements. The FLUSH PRIVILEGES command reloads the privileges from the grant tables in the MySQL database, making the changes take effect immediately.
 
-create database stockDatabase;
+create database testdatabase;
 
 
 exit;

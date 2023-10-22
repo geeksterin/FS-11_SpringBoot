@@ -1,0 +1,56 @@
+after copying 5 commands from github on ec2 machine 
+
+sudo ./svc.sh install
+
+sudo ./svc.sh start
+
+this will start the runner
+
+
+Hints for changing the maven.yml file
+
+1) remove the following:
+
+pull_request:
+    branches: [ "master" ]
+
+
+2) change the the following :
+
+runs-on: ubuntu-latest -> runs-on: self-hosted
+
+
+3) remove the optional setting in the end:
+
+ # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
+    - name: Update dependency graph
+      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+
+
+4)fix the pom path : by default it is just pom.xml 
+
+it should be <project_name>/pom.xml
+
+
+
+commit the above changes and a new build should be triggered in github
+
+Once that is done : the _work/.....target/<some>.jar file should be created
+
+
+the aim is to use the jar file path and put it in the maven.yml file path
+
+
+yml deployment step example :
+
+- name: Execute Jar file
+      run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/todo-app-fs-11-first-deploy/todo-app-fs-11-first-deploy/todoApp/target/todoApp-0.0.1-SNAPSHOT.jar &
+
+
+just change the path after _work/ to whatever your jar path is !!
+
+and commit the change, this will again start the build and deploy as well because of the modified yml file
+
+if everything was done correctly, this is all that is needed
+
+
