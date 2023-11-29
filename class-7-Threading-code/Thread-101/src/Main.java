@@ -9,7 +9,7 @@ public class Main {
        // tobj1.run();
         tobj1.start();
         tobj2.start();
-        System.out.println("At End of Code!!!!");
+        System.out.println("At        End of Code!!!!");
 
         //TestThreadI runTobj = new TestThreadI();
         //Thread ti1 = new Thread(runTobj);
