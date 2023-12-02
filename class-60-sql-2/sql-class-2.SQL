@@ -142,4 +142,67 @@ FROM
     employees
 LEFT JOIN
     departments ON employees.department_id = departments.department_id;
+	
+	
+	
+-----------
+
+-- 1. Basic Subquery
+SELECT employee_name
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+
+-- 2. Subquery with IN
+SELECT employee_name
+FROM employees
+WHERE department_id IN (SELECT department_id FROM departments WHERE department_name IN ('IT', 'HR'));
+
+-- 3. Subquery with EXISTS
+SELECT department_name
+FROM departments
+WHERE EXISTS (SELECT 1 FROM employees WHERE employees.department_id = departments.department_id);
+
+-- 4. Subquery with NOT EXISTS
+SELECT department_name
+FROM departments
+WHERE NOT EXISTS (SELECT 1 FROM employees WHERE employees.department_id = departments.department_id);
+
+-- 5. Correlated Subquery
+SELECT employee_name
+FROM employees e
+WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id);
+
+-- 6. Scalar Subquery
+SELECT employee_name
+FROM employees
+WHERE salary = (SELECT MAX(salary) FROM employees);
+
+-- 7. Subquery in SELECT Clause
+SELECT employee_name,
+       (SELECT COUNT(*) FROM employees WHERE department_id = e.department_id) AS num_employees
+FROM employees e;
+
+-- 8. Subquery with Aggregate Function
+SELECT employee_name
+FROM employees
+WHERE salary >= (SELECT MAX(salary) - 500 FROM employees);
+
+-- 9. Subquery with LIMIT
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+ORDER BY avg_salary DESC
+LIMIT 5;
+
+-- 10. Nested Subquery
+SELECT employee_name
+FROM employees
+WHERE department_id = (
+    SELECT department_id
+    FROM employees
+    GROUP BY department_id
+    ORDER BY AVG(salary) DESC
+    LIMIT 1
+);
+	
 

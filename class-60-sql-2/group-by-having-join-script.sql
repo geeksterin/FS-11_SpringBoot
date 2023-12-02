@@ -70,6 +70,10 @@ INSERT INTO employee VALUES
     (3, 'Vishal', 1, 70000.75),
     (4, 'Masum', 3, 50000.25);
     
+    
+INSERT INTO employee VALUES
+(5, 'Sujit', 9, 65000.00)
+    
 
 
 -- Create departments table
@@ -83,6 +87,12 @@ INSERT INTO department VALUES
     (1, 'HR'),
     (2, 'IT'),
     (3, 'Marketing');
+    
+INSERT INTO department VALUES
+(4, 'Sales')
+
+INSERT INTO department VALUES
+(5, 'Devops')
     
     
    ## data ready for employees and departments table "4
@@ -109,6 +119,55 @@ select department.department_id,department.department_name,sum(salary)
 from employee join department
 on employee.department_id = department.department_id
 group by department.department_id,department.department_name
+
+
+select *
+from employee left join department
+on employee.department_id = department.department_id
+
+select *
+from department  left join employee
+on employee.department_id = department.department_id
+
+
+select department.department_id,department.department_name,sum(salary)
+from department left join employee
+on employee.department_id = department.department_id
+group by department.department_id,department.department_name
+
+
+select *
+from employee join department on employee.department_id = department.department_id
+where salary > 60000
+
+select department.department_id,department.department_name,count(employee_id) as count_emp
+from department left join employee
+on employee.department_id = department.department_id
+group by department.department_id,department.department_name
+
+
+select employee.*
+from employee left join department
+on employee.department_id = department.department_id
+where department.department_id is null
+
+select employee_id, 
+employee_name, 
+case
+	when (department_name is null) then 'Ghatiya'
+    else department_name
+end as custom_dept_col
+from employee left join department
+on employee.department_id = department.department_id
+
+
+select *
+from employee
+where employee_name like '%ee'
+
+
+
+
 
 
 
